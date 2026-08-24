@@ -1,0 +1,797 @@
+
+              <html class="">
+                
+  <head>
+    
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+      window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest', // Options: 'nest', 'remove', 'replace'
+      };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+<style>
+  * {
+    font-family: "{{font}}", sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+    
+<style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+</style>
+
+    
+<style>
+   :root {
+          /* Base colors */
+          --color-base: #ffffff;
+          --color-base-50: #f9fafb;
+          --color-base-100: #f3f4f6;
+          --color-base-200: #e5e7eb;
+          --color-base-300: #d1d5db;
+          --color-base-400: #9ca3af;
+          --color-base-500: #6b7280;
+          --color-base-600: #4b5563;  
+          --color-base-700: #374151;
+          --color-base-800: #1f2937;  
+          --color-base-900: #111827;
+          --color-base-content: #1f2937;
+
+          /* Primary colors */
+          --color-primary: #3b82f6;
+          --color-primary-50: #eff6ff;
+          --color-primary-100: #dbeafe;
+          --color-primary-200: #bfdbfe;
+          --color-primary-300: #93c5fd;
+          --color-primary-400: #60a5fa;
+          --color-primary-500: #3b82f6;
+          --color-primary-600: #2563eb;
+          --color-primary-700: #1d4ed8;
+          --color-primary-800: #1e40af;
+          --color-primary-900: #1e3a8a;
+          --color-primary-focus: #2563eb;
+          --color-primary-content: #ffffff;
+
+          /* Secondary colors */
+          --color-secondary: #8b5cf6;
+          --color-secondary-50: #f5f3ff;
+          --color-secondary-100: #ede9fe;
+          --color-secondary-200: #ddd6fe;
+          --color-secondary-300: #c4b5fd;
+          --color-secondary-400: #a78bfa;
+          --color-secondary-500: #8b5cf6;
+          --color-secondary-600: #7c3aed;
+          --color-secondary-700: #6d28d9;
+          --color-secondary-800: #5b21b6;
+          --color-secondary-900: #4c1d95;
+          --color-secondary-focus: #7c3aed;
+          --color-secondary-content: #ffffff;
+
+          /* Accent colors */
+          --color-accent: #f472b6;
+          --color-accent-50: #fdf2f8;
+          --color-accent-100: #fce7f3;
+          --color-accent-200: #fbcfe8;
+          --color-accent-300: #f9a8d4;
+          --color-accent-400: #f472b6;
+          --color-accent-500: #ec4899;
+          --color-accent-600: #db2777;
+          --color-accent-700: #be185d;
+          --color-accent-800: #9d174d;
+          --color-accent-900: #831843;
+          --color-accent-focus: #db2777;
+          --color-accent-content: #ffffff;
+
+          /* Neutral colors */
+          --color-neutral: #6b7280;
+          --color-neutral-50: #f9fafb;
+          --color-neutral-100: #f3f4f6;
+          --color-neutral-200: #e5e7eb;
+          --color-neutral-300: #d1d5db;
+          --color-neutral-400: #9ca3af;
+          --color-neutral-500: #6b7280;
+          --color-neutral-600: #4b5563;
+          --color-neutral-700: #374151;
+          --color-neutral-800: #1f2937;
+          --color-neutral-900: #111827;
+          --color-neutral-focus: #4b5563;
+          --color-neutral-content: #ffffff;
+
+          /* Info colors */
+          --color-info: #3b82f6;
+          --color-info-50: #eff6ff;
+          --color-info-100: #dbeafe;
+          --color-info-200: #bfdbfe;
+          --color-info-300: #93c5fd;
+          --color-info-400: #60a5fa;
+          --color-info-500: #3b82f6;
+          --color-info-600: #2563eb;
+          --color-info-700: #1d4ed8;
+          --color-info-800: #1e40af;
+          --color-info-900: #1e3a8a;
+          --color-info-focus: #2563eb;
+          --color-info-content: #ffffff;
+
+          /* Success colors */
+          --color-success: #10b981;
+          --color-success-50: #ecfdf5;
+          --color-success-100: #d1fae5;
+          --color-success-200: #a7f3d0;
+          --color-success-300: #6ee7b7;
+          --color-success-400: #34d399;
+          --color-success-500: #10b981;
+          --color-success-600: #059669;
+          --color-success-700: #047857;
+          --color-success-800: #065f46;
+          --color-success-900: #064e3b;
+          --color-success-focus: #059669;
+          --color-success-content: #ffffff;
+
+          /* Warning colors */
+          --color-warning: #f59e0b;
+          --color-warning-50: #fffbeb;
+          --color-warning-100: #fef3c7;
+          --color-warning-200: #fde68a;
+          --color-warning-300: #fcd34d;
+          --color-warning-400: #fbbf24;
+          --color-warning-500: #f59e0b;
+          --color-warning-600: #d97706;
+          --color-warning-700: #b45309;
+          --color-warning-800: #92400e;
+          --color-warning-900: #78350f;
+          --color-warning-focus: #d97706;
+          --color-warning-content: #ffffff;
+
+          /* Error colors */
+          --color-error: #ef4444;
+          --color-error-50: #fef2f2;
+          --color-error-100: #fee2e2;
+          --color-error-200: #fecaca;
+          --color-error-300: #fca5a5;
+          --color-error-400: #f87171;
+          --color-error-500: #ef4444;
+          --color-error-600: #dc2626;
+          --color-error-700: #b91c1c;
+          --color-error-800: #991b1b;
+          --color-error-900: #7f1d1d;
+          --color-error-focus: #dc2626;
+          --color-error-content: #ffffff;
+        }
+</style>
+
+    
+<style>
+/* Dark theme */
+        .dark {
+          /* Base colors */
+          --color-base: #1f2937;
+          --color-base-50: #111827;
+          --color-base-100: #1f2937;
+          --color-base-200: #374151;
+          --color-base-300: #4b5563;
+          --color-base-400: #6b7280;
+          --color-base-500: #9ca3af;
+          --color-base-600: #d1d5db;
+          --color-base-700: #e5e7eb;
+          --color-base-800: #f3f4f6;
+          --color-base-900: #f9fafb;
+          --color-base-content: #f9fafb;
+
+          /* Primary colors */
+          --color-primary: #60a5fa;
+          --color-primary-50: #1e3a8a;
+          --color-primary-100: #1e40af;
+          --color-primary-200: #1d4ed8;
+          --color-primary-300: #2563eb;
+          --color-primary-400: #3b82f6;
+          --color-primary-500: #60a5fa;
+          --color-primary-600: #93c5fd;
+          --color-primary-700: #bfdbfe;
+          --color-primary-800: #dbeafe;
+          --color-primary-900: #eff6ff;
+          --color-primary-focus: #3b82f6;
+          --color-primary-content: #1f2937;
+
+          /* Secondary colors */
+          --color-secondary: #a78bfa;
+          --color-secondary-50: #4c1d95;
+          --color-secondary-100: #5b21b6;
+          --color-secondary-200: #6d28d9;
+          --color-secondary-300: #7c3aed;
+          --color-secondary-400: #8b5cf6;
+          --color-secondary-500: #a78bfa;
+          --color-secondary-600: #c4b5fd;
+          --color-secondary-700: #ddd6fe;
+          --color-secondary-800: #ede9fe;
+          --color-secondary-900: #f5f3ff;
+          --color-secondary-focus: #8b5cf6;
+          --color-secondary-content: #1f2937;
+
+          /* Accent colors */
+          --color-accent: #f472b6;
+          --color-accent-50: #831843;
+          --color-accent-100: #9d174d;
+          --color-accent-200: #be185d;
+          --color-accent-300: #db2777;
+          --color-accent-400: #ec4899;
+          --color-accent-500: #f472b6;
+          --color-accent-600: #f9a8d4;
+          --color-accent-700: #fbcfe8;
+          --color-accent-800: #fce7f3;
+          --color-accent-900: #fdf2f8;
+          --color-accent-focus: #ec4899;
+          --color-accent-content: #1f2937;
+
+          /* Neutral colors remain the same as light theme */
+
+          /* Info colors */
+          --color-info: #60a5fa;
+          --color-info-50: #1e3a8a;
+          --color-info-100: #1e40af;
+          --color-info-200: #1d4ed8;
+          --color-info-300: #2563eb;
+          --color-info-400: #3b82f6;
+          --color-info-500: #60a5fa;
+          --color-info-600: #93c5fd;
+          --color-info-700: #bfdbfe;
+          --color-info-800: #dbeafe;
+          --color-info-900: #eff6ff;
+          --color-info-focus: #3b82f6;
+          --color-info-content: #1f2937;
+
+          /* Success colors */
+          --color-success: #34d399;
+          --color-success-50: #064e3b;
+          --color-success-100: #065f46;
+          --color-success-200: #047857;
+          --color-success-300: #059669;
+          --color-success-400: #10b981;
+          --color-success-500: #34d399;
+          --color-success-600: #6ee7b7;
+          --color-success-700: #a7f3d0;
+          --color-success-800: #d1fae5;
+          --color-success-900: #ecfdf5;
+          --color-success-focus: #10b981;
+          --color-success-content: #1f2937;
+
+          /* Warning colors */
+          --color-warning: #fbbf24;
+          --color-warning-50: #78350f;
+          --color-warning-100: #92400e;
+          --color-warning-200: #b45309;
+          --color-warning-300: #d97706;
+          --color-warning-400: #f59e0b;
+          --color-warning-500: #fbbf24;
+          --color-warning-600: #fcd34d;
+          --color-warning-700: #fde68a;
+          --color-warning-800: #fef3c7;
+          --color-warning-900: #fffbeb;
+          --color-warning-focus: #f59e0b;
+          --color-warning-content: #1f2937;
+
+          /* Error colors */
+          --color-error: #f87171;
+          --color-error-50: #7f1d1d;
+          --color-error-100: #991b1b;
+          --color-error-200: #b91c1c;
+          --color-error-300: #dc2626;
+          --color-error-400: #ef4444;
+          --color-error-500: #f87171;
+          --color-error-600: #fca5a5;
+          --color-error-700: #fecaca;
+          --color-error-800: #fee2e2;
+          --color-error-900: #fef2f2;
+          --color-error-focus: #ef4444;
+          --color-error-content: #1f2937;
+        }
+</style>
+
+    
+  <script>
+        tailwind.config = {
+            theme: {
+              extend: {
+                colors: {
+                ...{"transparent":"transparent","current":"currentColor","black":"#000000","white":"#ffffff","gray":{"50":"#f9fafb","100":"#f3f4f6","200":"#e5e7eb","300":"#d1d5db","400":"#9ca3af","500":"#6b7280","600":"#4b5563","700":"#374151","800":"#1f2937","900":"#111827"},"red":{"50":"#fef2f2","100":"#fee2e2","200":"#fecaca","300":"#fca5a5","400":"#f87171","500":"#ef4444","600":"#dc2626","700":"#b91c1c","800":"#991b1b","900":"#7f1d1d"},"yellow":{"50":"#fffbeb","100":"#fef3c7","200":"#fde68a","300":"#fcd34d","400":"#fbbf24","500":"#f59e0b","600":"#d97706","700":"#b45309","800":"#92400e","900":"#78350f"},"green":{"50":"#ecfdf5","100":"#d1fae5","200":"#a7f3d0","300":"#6ee7b7","400":"#34d399","500":"#10b981","600":"#059669","700":"#047857","800":"#065f46","900":"#064e3b"},"blue":{"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a"},"indigo":{"50":"#eef2ff","100":"#e0e7ff","200":"#c7d2fe","300":"#a5b4fc","400":"#818cf8","500":"#6366f1","600":"#4f46e5","700":"#4338ca","800":"#3730a3","900":"#312e81"},"purple":{"50":"#f5f3ff","100":"#ede9fe","200":"#ddd6fe","300":"#c4b5fd","400":"#a78bfa","500":"#8b5cf6","600":"#7c3aed","700":"#6d28d9","800":"#5b21b6","900":"#4c1d95"},"pink":{"50":"#fdf2f8","100":"#fce7f3","200":"#fbcfe8","300":"#f9a8d4","400":"#f472b6","500":"#ec4899","600":"#db2777","700":"#be185d","800":"#9d174d","900":"#831843"}},
+                ...{"primary":{"50":"var(--color-primary-50)","100":"var(--color-primary-100)","200":"var(--color-primary-200)","300":"var(--color-primary-300)","400":"var(--color-primary-400)","500":"var(--color-primary-500)","600":"var(--color-primary-600)","700":"var(--color-primary-700)","800":"var(--color-primary-800)","900":"var(--color-primary-900)","DEFAULT":"var(--color-primary)","focus":"var(--color-primary-focus)","content":"var(--color-primary-content)"},"secondary":{"50":"var(--color-secondary-50)","100":"var(--color-secondary-100)","200":"var(--color-secondary-200)","300":"var(--color-secondary-300)","400":"var(--color-secondary-400)","500":"var(--color-secondary-500)","600":"var(--color-secondary-600)","700":"var(--color-secondary-700)","800":"var(--color-secondary-800)","900":"var(--color-secondary-900)","DEFAULT":"var(--color-secondary)","focus":"var(--color-secondary-focus)","content":"var(--color-secondary-content)"},"accent":{"50":"var(--color-accent-50)","100":"var(--color-accent-100)","200":"var(--color-accent-200)","300":"var(--color-accent-300)","400":"var(--color-accent-400)","500":"var(--color-accent-500)","600":"var(--color-accent-600)","700":"var(--color-accent-700)","800":"var(--color-accent-800)","900":"var(--color-accent-900)","DEFAULT":"var(--color-accent)","focus":"var(--color-accent-focus)","content":"var(--color-accent-content)"},"neutral":{"50":"var(--color-neutral-50)","100":"var(--color-neutral-100)","200":"var(--color-neutral-200)","300":"var(--color-neutral-300)","400":"var(--color-neutral-400)","500":"var(--color-neutral-500)","600":"var(--color-neutral-600)","700":"var(--color-neutral-700)","800":"var(--color-neutral-800)","900":"var(--color-neutral-900)","DEFAULT":"var(--color-neutral)","focus":"var(--color-neutral-focus)","content":"var(--color-neutral-content)"},"info":{"50":"var(--color-info-50)","100":"var(--color-info-100)","200":"var(--color-info-200)","300":"var(--color-info-300)","400":"var(--color-info-400)","500":"var(--color-info-500)","600":"var(--color-info-600)","700":"var(--color-info-700)","800":"var(--color-info-800)","900":"var(--color-info-900)","DEFAULT":"var(--color-info)","focus":"var(--color-info-focus)","content":"var(--color-info-content)"},"success":{"50":"var(--color-success-50)","100":"var(--color-success-100)","200":"var(--color-success-200)","300":"var(--color-success-300)","400":"var(--color-success-400)","500":"var(--color-success-500)","600":"var(--color-success-600)","700":"var(--color-success-700)","800":"var(--color-success-800)","900":"var(--color-success-900)","DEFAULT":"var(--color-success)","focus":"var(--color-success-focus)","content":"var(--color-success-content)"},"warning":{"50":"var(--color-warning-50)","100":"var(--color-warning-100)","200":"var(--color-warning-200)","300":"var(--color-warning-300)","400":"var(--color-warning-400)","500":"var(--color-warning-500)","600":"var(--color-warning-600)","700":"var(--color-warning-700)","800":"var(--color-warning-800)","900":"var(--color-warning-900)","DEFAULT":"var(--color-warning)","focus":"var(--color-warning-focus)","content":"var(--color-warning-content)"},"error":{"50":"var(--color-error-50)","100":"var(--color-error-100)","200":"var(--color-error-200)","300":"var(--color-error-300)","400":"var(--color-error-400)","500":"var(--color-error-500)","600":"var(--color-error-600)","700":"var(--color-error-700)","800":"var(--color-error-800)","900":"var(--color-error-900)","DEFAULT":"var(--color-error)","focus":"var(--color-error-focus)","content":"var(--color-error-content)"},"danger":{"50":"var(--color-error-50)","100":"var(--color-error-100)","200":"var(--color-error-200)","300":"var(--color-error-300)","400":"var(--color-error-400)","500":"var(--color-error-500)","600":"var(--color-error-600)","700":"var(--color-error-700)","800":"var(--color-error-800)","900":"var(--color-error-900)","DEFAULT":"var(--color-error)","focus":"var(--color-error-focus)","content":"var(--color-error-content)"},"failure":{"50":"var(--color-error-50)","100":"var(--color-error-100)","200":"var(--color-error-200)","300":"var(--color-error-300)","400":"var(--color-error-400)","500":"var(--color-error-500)","600":"var(--color-error-600)","700":"var(--color-error-700)","800":"var(--color-error-800)","900":"var(--color-error-900)","DEFAULT":"var(--color-error)","focus":"var(--color-error-focus)","content":"var(--color-error-content)"}},
+                },
+              },
+            },
+            variants: {
+              extend: {
+                backgroundColor: ['active', 'group-hover'],
+                textColor: ['active', 'group-hover'],
+              },
+            },
+            plugins: [],
+          };
+  </script>
+
+  </head>
+
+                <body class="h-full text-base-content">
+                      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: '#00f0ff',
+              brandSecondary: '#ff00ff',
+              ink: '#050508',
+              surface: '#0d0e12',
+              elevated: '#15181f',
+              hairline: '#222933',
+              muted: '#7a8599',
+              dim: '#454d5c',
+            },
+            fontFamily: {
+              display: ['Space Grotesk', 'sans-serif'],
+              body: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            keyframes: {
+              pulseDot: {
+                '0%,100%': { opacity: '1', transform: 'scale(1)' },
+                '50%': { opacity: '.3', transform: 'scale(1.4)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              glitch: {
+                '0%': { transform: 'translate(0)' },
+                '20%': { transform: 'translate(-2px, 2px)' },
+                '40%': { transform: 'translate(-2px, -2px)' },
+                '60%': { transform: 'translate(2px, 2px)' },
+                '80%': { transform: 'translate(2px, -2px)' },
+                '100%': { transform: 'translate(0)' },
+              }
+            },
+            animation: {
+              pulseDot: 'pulseDot 2s ease-in-out infinite',
+              float: 'float 6s ease-in-out infinite',
+              glitch: 'glitch 0.3s cubic-bezier(.25,.46,.45,.94) both infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050508; color: #7a8599; overflow-x: hidden; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        .glass {
+            background: rgba(13, 14, 18, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .text-glow { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.2); }
+        .bg-glow { box-shadow: 0 0 30px rgba(0, 240, 255, 0.15); }
+        .nav-link { position: relative; padding-bottom: 2px; transition: color 0.3s ease; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 1px; bottom: 0; right: 0; background: #00f0ff; transition: width 0.3s ease; }
+        .nav-link:hover::after { width: 100%; left: 0; right: auto; }
+        .hero-gradient { background: linear-gradient(to bottom, rgba(5,5,8,0.2) 0%, rgba(5,5,8,1) 95%); }
+        .word-outline { -webkit-text-fill-color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.2); transition: all 0.5s ease; }
+        .word-outline:hover { -webkit-text-fill-color: #fff; -webkit-text-stroke: 1px transparent; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+        .bento-item { transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .bento-item:hover { transform: translateY(-8px); border-color: rgba(0, 240, 255, 0.3); }
+        .grid-lines {
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .scanlines::after {
+            content: ""; position: absolute; inset: 0; pointer-events: none;
+            background: repeating-linear-gradient(transparent 0, transparent 2px, rgba(0, 240, 255, 0.02) 2px, rgba(0, 240, 255, 0.02) 4px);
+            z-index: 50;
+        }
+        .reveal-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-up.active { opacity: 1; transform: translateY(0); }
+        .magnetic-btn { transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand selection:text-ink scanlines">
+
+    <div id="loader" class="fixed inset-0 z-[9999] bg-ink flex items-center justify-center transition-opacity duration-1000">
+        <div class="flex flex-col items-center gap-4">
+            <div class="w-16 h-16 border-2 border-brand/20 border-t-brand rounded-full animate-spin"></div>
+            <p class="text-[10px] tracking-[0.5em] uppercase text-brand animate-pulse">Initializing System...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-[1000] px-8 py-6 flex justify-between items-center transition-all duration-500" id="navbar">
+        <div class="flex items-center gap-12">
+            <a href="#" class="flex items-center gap-3 text-white font-bold tracking-tighter text-2xl font-display group">
+                <div class="relative w-3 h-3">
+                    <span class="absolute inset-0 bg-brand rounded-full animate-pulseDot"></span>
+                    <span class="absolute inset-0 bg-brand rounded-full opacity-50 blur-sm"></span>
+                </div>
+                TECH<span class="text-brand">FEST</span>
+            </a>
+            <div class="hidden lg:flex gap-10 text-[10px] tracking-[0.2em] uppercase font-bold text-muted">
+                <a href="#" class="nav-link hover:text-white transition-colors">Initiate</a>
+                <a href="#events" class="nav-link hover:text-white transition-colors">Matrix</a>
+                <a href="#schedule" class="nav-link hover:text-white transition-colors">Timeline</a>
+                <a href="#sponsors" class="nav-link hover:text-white transition-colors">Ecosystem</a>
+            </div>
+        </div>
+        <div class="flex items-center gap-8">
+            <div class="hidden xl:flex flex-col items-end">
+                <div class="flex items-center gap-2 text-[9px] tracking-widest text-brand uppercase font-mono">
+                    <span class="w-1 h-1 bg-brand rounded-full"></span>
+                    Neural Link Active
+                </div>
+                <div class="text-[9px] tracking-widest text-dim uppercase font-mono mt-0.5">Latency: 0.04ms</div>
+            </div>
+            <button class="magnetic-btn glass px-8 py-3 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full text-white hover:bg-brand hover:text-ink transition-all border-brand/30">
+                Register
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-elevated scale-110" id="hero-bg">
+                <img class="w-full h-full object-cover opacity-60 mix-blend-luminosity" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/gen_97248b284d_ccd8106a6109971f.png" alt="epic cinematic portrait of a cybernetic warrior with glowing cyan optical nerve connections, highly " />
+            </div>
+            <div class="absolute inset-0 hero-gradient"></div>
+            <div class="absolute inset-0 grid-lines opacity-10"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="reveal-up active">
+                <div class="inline-flex items-center gap-4 mb-8 glass px-4 py-2 rounded-full border-brand/20">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+                    </span>
+                    <span class="text-[10px] tracking-[0.3em] uppercase text-brand font-mono">Nov 14-16 // Neo-City Hub</span>
+                </div>
+                <h1 class="font-display text-7xl md:text-9xl lg:text-[12rem] font-bold tracking-tighter leading-none mb-8 text-white">
+                    CYB<span class="word-outline">ORG</span>
+                </h1>
+                <p class="text-lg md:text-2xl max-w-2xl mx-auto mb-12 text-muted font-light leading-relaxed tracking-wide">
+                    The fusion of biological intellect and synthetic power. Experience the next stage of human evolution.
+                </p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                    <button class="magnetic-btn bg-brand text-ink px-12 py-5 text-xs font-black tracking-[0.3em] uppercase rounded-full shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:shadow-[0_0_50px_rgba(0,240,255,0.5)] transition-all">
+                        Join the Hive
+                    </button>
+                    <button class="magnetic-btn glass px-12 py-5 text-xs font-bold tracking-[0.3em] uppercase rounded-full text-white border-white/10 hover:border-brand/50 transition-all">
+                        View Dossier
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scrolling Indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-dim">
+            <span class="text-[9px] tracking-[0.4em] uppercase font-mono">Infiltrate</span>
+            <div class="w-[1px] h-12 bg-gradient-to-b from-brand/50 to-transparent"></div>
+        </div>
+    </header>
+
+    <!-- Marquee -->
+    <div class="py-6 bg-brand overflow-hidden border-y border-brand/50">
+        <div class="flex whitespace-nowrap animate-ticker">
+            <div class="flex gap-20 items-center px-10">
+                <span class="text-ink font-display text-2xl font-black italic uppercase tracking-tighter">Human Machine Interface</span>
+                <span class="text-ink text-sm font-mono opacity-50">/ / / /</span>
+                <span class="text-ink font-display text-2xl font-black italic uppercase tracking-tighter">Direct Neural Integration</span>
+                <span class="text-ink text-sm font-mono opacity-50">/ / / /</span>
+                <span class="text-ink font-display text-2xl font-black italic uppercase tracking-tighter">Synthetic Evolution</span>
+                <span class="text-ink text-sm font-mono opacity-50">/ / / /</span>
+                <span class="text-ink font-display text-2xl font-black italic uppercase tracking-tighter">Cognitive Augmentation</span>
+            </div>
+            <!-- Duplicate for infinite loop -->
+            <div class="flex gap-20 items-center px-10">
+                <span class="text-ink font-display text-2xl font-black italic uppercase tracking-tighter">Human Machine Interface</span>
+                <span class="text-ink text-sm font-mono opacity-50">/ / / /</span>
+                <span class="text-ink font-display text-2xl font-black italic uppercase tracking-tighter">Direct Neural Integration</span>
+                <span class="text-ink text-sm font-mono opacity-50">/ / / /</span>
+                <span class="text-ink font-display text-2xl font-black italic uppercase tracking-tighter">Synthetic Evolution</span>
+                <span class="text-ink text-sm font-mono opacity-50">/ / / /</span>
+                <span class="text-ink font-display text-2xl font-black italic uppercase tracking-tighter">Cognitive Augmentation</span>
+            </div>
+        </div>
+    </div>
+    <style>
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-ticker { animation: ticker 20s linear infinite; }
+    </style>
+
+    <!-- Experience Matrix / Bento -->
+    <section id="events" class="py-40 bg-ink relative">
+        <div class="container mx-auto px-6">
+            <div class="mb-24 flex flex-col items-center text-center">
+                <span class="text-brand text-[10px] tracking-[0.5em] uppercase font-mono mb-4">Core Modules</span>
+                <h2 class="font-display text-5xl md:text-8xl font-bold text-white tracking-tighter">
+                    THE <span class="word-outline">MATRIX</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[900px]">
+                <div class="reveal-up md:col-span-8 bg-surface rounded-3xl overflow-hidden group border border-white/5 bento-item relative p-12 flex flex-col justify-end">
+                    <img class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/gen_684aa539ec_9fbbe9b70c01f005.png" alt="abstract cybernetic neural network landscape with glowing blue synapses in a vast dark void, cinemat" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent"></div>
+                    <div class="relative z-10">
+                        <span class="text-brand text-[10px] font-mono mb-2 block uppercase tracking-widest">Protocol 01</span>
+                        <h3 class="text-white font-display text-4xl md:text-5xl font-bold mb-4 tracking-tighter">Neural Hackathon</h3>
+                        <p class="text-muted text-lg max-w-xl mb-8 leading-relaxed">Build the software that will drive the next generation of cybernetic implants in a 48-hour intensive session.</p>
+                        <button class="text-white text-xs font-bold uppercase tracking-widest flex items-center gap-3 group/btn">
+                            Initialize <span class="w-10 h-[1px] bg-brand group-hover/btn:w-20 transition-all duration-500"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="reveal-up md:col-span-4 bg-surface rounded-3xl overflow-hidden group border border-white/5 bento-item relative p-8 flex flex-col justify-end">
+                    <img class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-all duration-700 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/gen_c5918e971e_561f438b135b0be6.png" alt="macro shot of a robotic eye with iris detail, glowing internal circuits, tech noir aesthetic" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"></div>
+                    <div class="relative z-10">
+                        <span class="text-brand text-[10px] font-mono mb-1 block uppercase tracking-widest">Protocol 02</span>
+                        <h3 class="text-white font-display text-2xl font-bold mb-2">Bionic Labs</h3>
+                        <p class="text-muted text-sm leading-relaxed">Hands-on hardware workshops.</p>
+                    </div>
+                </div>
+                <div class="reveal-up md:col-span-4 bg-surface rounded-3xl overflow-hidden group border border-white/5 bento-item relative p-8 flex flex-col justify-end">
+                    <img class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-all duration-700 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/gen_83b940c5dd_0fb9020125ef5a34.png" alt="glitchy digital data streams on black background, cyber security concept" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"></div>
+                    <div class="relative z-10">
+                        <span class="text-brand text-[10px] font-mono mb-1 block uppercase tracking-widest">Protocol 03</span>
+                        <h3 class="text-white font-display text-2xl font-bold mb-2">Dark Web Quest</h3>
+                        <p class="text-muted text-sm leading-relaxed">Cybersecurity challenge.</p>
+                    </div>
+                </div>
+                <div class="reveal-up md:col-span-8 bg-surface rounded-3xl overflow-hidden group border border-white/5 bento-item relative p-12 flex flex-col justify-end">
+                    <img class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-all duration-700 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/gen_89dc62ae60_44e11883c7d93f21.png" alt="abstract futuristic stadium with neon lights and digital screens, esports tournament setting" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent"></div>
+                    <div class="relative z-10">
+                        <span class="text-brand text-[10px] font-mono mb-2 block uppercase tracking-widest">Protocol 04</span>
+                        <h3 class="text-white font-display text-4xl font-bold mb-4 tracking-tighter">Esports Nexus</h3>
+                        <p class="text-muted text-lg max-w-md mb-8 leading-relaxed">High-latency competitive arena where pros battle in augmented environments.</p>
+                        <button class="text-white text-xs font-bold uppercase tracking-widest flex items-center gap-3 group/btn">
+                            Enter Arena <span class="w-10 h-[1px] bg-brand group-hover/btn:w-20 transition-all duration-500"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule with Timeline Animation -->
+    <section id="schedule" class="py-40 bg-surface relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-32 gap-12">
+                <div class="max-w-2xl">
+                    <span class="text-brand text-[10px] tracking-[0.5em] uppercase font-mono mb-4 block">Sequence</span>
+                    <h2 class="font-display text-5xl md:text-8xl font-bold text-white tracking-tighter leading-tight">
+                        SYSTEM <br> <span class="word-outline">TIMELINE</span>
+                    </h2>
+                </div>
+                <div class="flex p-1.5 bg-ink rounded-full border border-white/5 glass">
+                    <button class="px-10 py-3 text-[10px] tracking-widest uppercase font-black bg-brand text-ink rounded-full transition-all">Day 01</button>
+                    <button class="px-10 py-3 text-[10px] tracking-widest uppercase font-bold text-muted hover:text-white transition-all">Day 02</button>
+                    <button class="px-10 py-3 text-[10px] tracking-widest uppercase font-bold text-muted hover:text-white transition-all">Day 03</button>
+                </div>
+            </div>
+
+            <div class="relative max-w-5xl mx-auto py-20">
+                <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-brand/0 via-brand/30 to-brand/0 -translate-x-1/2"></div>
+
+                <div class="space-y-32">
+                    <div class="reveal-up flex items-center gap-12 md:gap-24 relative">
+                        <div class="flex-1 text-right">
+                            <span class="text-brand font-mono text-xs mb-2 block">09:00</span>
+                            <h4 class="text-2xl md:text-4xl font-display font-bold text-white mb-4">Neural Upload</h4>
+                            <p class="text-muted text-sm leading-relaxed max-w-sm ml-auto">Initial orientation and system synchronization protocols for all participants.</p>
+                        </div>
+                        <div class="relative z-10 w-12 h-12 glass rounded-full flex items-center justify-center border-brand/50 group hover:bg-brand transition-all duration-500">
+                            <div class="w-3 h-3 bg-brand rounded-full group-hover:bg-ink"></div>
+                        </div>
+                        <div class="flex-1"></div>
+                    </div>
+
+                    <div class="reveal-up flex flex-row-reverse items-center gap-12 md:gap-24 relative">
+                        <div class="flex-1 text-left">
+                            <span class="text-brand font-mono text-xs mb-2 block">13:00</span>
+                            <h4 class="text-2xl md:text-4xl font-display font-bold text-white mb-4">Hardware Graft</h4>
+                            <p class="text-muted text-sm leading-relaxed max-w-sm">Live robotics demonstration and hands-on assembly in the Bio-Lab arena.</p>
+                        </div>
+                        <div class="relative z-10 w-12 h-12 glass rounded-full flex items-center justify-center border-brand/50 group hover:bg-brand transition-all duration-500">
+                            <div class="w-3 h-3 bg-brand rounded-full group-hover:bg-ink"></div>
+                        </div>
+                        <div class="flex-1"></div>
+                    </div>
+
+                    <div class="reveal-up flex items-center gap-12 md:gap-24 relative">
+                        <div class="flex-1 text-right">
+                            <span class="text-brand font-mono text-xs mb-2 block">19:00</span>
+                            <h4 class="text-2xl md:text-4xl font-display font-bold text-white mb-4">Deep Logic Sync</h4>
+                            <p class="text-muted text-sm leading-relaxed max-w-sm ml-auto">Keynote from the lead architect of Neo-City's central intelligence core.</p>
+                        </div>
+                        <div class="relative z-10 w-12 h-12 glass rounded-full flex items-center justify-center border-brand/50 group hover:bg-brand transition-all duration-500">
+                            <div class="w-3 h-3 bg-brand rounded-full group-hover:bg-ink"></div>
+                        </div>
+                        <div class="flex-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section id="sponsors" class="py-40 bg-ink">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-24">
+                <span class="text-brand text-[10px] tracking-[0.5em] uppercase font-mono mb-4 block">Ecosystem Partners</span>
+                <h2 class="font-display text-4xl md:text-6xl font-bold text-white tracking-tighter">BACKED BY THE <span class="word-outline">CORE</span></h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="reveal-up glass p-10 flex items-center justify-center rounded-3xl border-white/5 hover:bg-brand/10 transition-all duration-500 group">
+                    <img class="h-8 md:h-12 w-auto opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/gen_0bfd07d0e0_8b49f1318484cec1.png" alt="futuristic minimal corporate logo mark, white, tech aesthetic, without background" />
+                </div>
+                <div class="reveal-up glass p-10 flex items-center justify-center rounded-3xl border-white/5 hover:bg-brand/10 transition-all duration-500 group">
+                    <img class="h-8 md:h-12 w-auto opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/gen_0bfd07d0e0_8b49f1318484cec1.png" alt="futuristic minimal corporate logo mark, white, tech aesthetic, without background" />
+                </div>
+                <div class="reveal-up glass p-10 flex items-center justify-center rounded-3xl border-white/5 hover:bg-brand/10 transition-all duration-500 group">
+                    <img class="h-8 md:h-12 w-auto opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/gen_0bfd07d0e0_8b49f1318484cec1.png" alt="futuristic minimal corporate logo mark, white, tech aesthetic, without background" />
+                </div>
+                <div class="reveal-up glass p-10 flex items-center justify-center rounded-3xl border-white/5 hover:bg-brand/10 transition-all duration-500 group">
+                    <img class="h-8 md:h-12 w-auto opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/gen_0bfd07d0e0_8b49f1318484cec1.png" alt="futuristic minimal corporate logo mark, white, tech aesthetic, without background" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-40 relative overflow-hidden flex items-center justify-center">
+        <div class="absolute inset-0 bg-brand"></div>
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="font-display text-7xl md:text-9xl font-black text-ink tracking-tighter leading-none mb-12">
+                INITIATE <br> LINK
+            </h2>
+            <p class="text-ink text-xl max-w-xl mx-auto mb-16 font-medium leading-relaxed">
+                Capacity at Neo-City Hub is limited. Synchronization begins in 42 days. Will you be part of the evolution?
+            </p>
+            <button class="bg-ink text-brand px-20 py-6 text-xs font-black tracking-[0.4em] uppercase rounded-full hover:bg-elevated hover:text-white transition-all shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
+                Secure Terminal
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about" class="bg-ink pt-32 pb-12 border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-20 mb-32">
+                <div class="max-w-md">
+                    <a href="#" class="text-3xl font-display font-black text-white tracking-tighter mb-8 block">TECHFEST: <span class="text-brand">CYBORG</span></a>
+                    <p class="text-muted text-lg leading-relaxed font-light">The world's leading synchronization of biological and synthetic intelligence. Pushing the boundaries of what it means to be human since 2025.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-20">
+                    <div>
+                        <h4 class="text-[10px] tracking-[0.4em] uppercase text-brand font-mono mb-8">Directives</h4>
+                        <ul class="space-y-4 text-muted text-sm font-medium">
+                            <li><a href="#" class="hover:text-white transition-colors">Manifesto</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Event Log</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Nodes</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] tracking-[0.4em] uppercase text-brand font-mono mb-8">Access</h4>
+                        <ul class="space-y-4 text-muted text-sm font-medium">
+                            <li><a href="#" class="hover:text-white transition-colors">Register</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Login</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/5 gap-8">
+                <span class="text-[9px] tracking-[0.3em] uppercase text-dim font-mono">© 2030 Neural Architecture Systems / / All Rights Reserved</span>
+                <div class="flex gap-8 text-dim">
+                    <a href="#" class="hover:text-brand transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                    <a href="#" class="hover:text-brand transition-colors"><i class="fab fa-discord text-xl"></i></a>
+                    <a href="#" class="hover:text-brand transition-colors"><i class="fab fa-github text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 1000);
+            }, 1500);
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-ink/80', 'backdrop-blur-xl', 'py-4', 'border-b', 'border-white/5');
+            } else {
+                nav.classList.remove('bg-ink/80', 'backdrop-blur-xl', 'py-4', 'border-b', 'border-white/5');
+            }
+        });
+
+        // Reveal Animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+        // Magnetic Button Effect
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        // Hero Parallax
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const heroBg = document.getElementById('hero-bg');
+            if (heroBg) {
+                heroBg.style.transform = `translateY(${scrolled * 0.5}px) scale(${1.1 + scrolled * 0.0005})`;
+            }
+        });
+    </script>
+
+</body></html>
+                </body>
+              </html>
+            
