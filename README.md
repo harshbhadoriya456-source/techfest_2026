@@ -1,51 +1,49 @@
-# TechFest 2030 — CYBORG
+# TechFest 2030 — 3D CYBORG Experience
 
-> **TechFest 2030: CYBORG — Human × Machine**  
+> **TechFest 2030: CYBORG — 3D Interactive Website**  
 > 30th Edition · Dec 16–18 · Neo-City Hub
 
-A premium, award-quality technology festival landing page. Built with editorial restraint and cinematic interaction design.
+A 3D interactive web experience built with **Three.js r128**, **GSAP ScrollTrigger**, and vanilla web technologies.
 
-## Features
+## 3D Features & Architecture
 
-- **Editorial Hero** — Enormous asymmetric typography, cybernetic background, live countdown timer to Dec 16, 2026
-- **Event Matrix** — 4 tracks: Neural Hackathon · Bionic Labs · Dark Web Quest · Esports Nexus
-- **System Timeline** — Day 01 boot sequence (Neural Upload · Hardware Graft · Deep Logic Sync)
-- **GSAP Animation** — ScrollTrigger reveals, hero entrance, timeline progress line, parallax
-- **Neural Canvas** — Interactive particle mesh with mouse repulsion
-- **Command Terminal** — `Ctrl+K` with `help`, `events`, `status`, `register`, `date`, `clear`
-- **Registration Modal** — Pass selection with track pre-fill
-- **Web Audio** — Minimal click feedback synthesizer
-- **Responsive** — Desktop, laptop, tablet, and mobile layouts
-- **Accessible** — `prefers-reduced-motion` respected throughout
+- **WebGL 3D Kernel (Three.js r128)**
+  - Central **CYBORG Core** — Glowing icosahedron sphere surrounded by dual rotating cyan & magenta wireframe torus rings
+  - **Neural Node Network** — 140 dynamic 3D particles connected by dynamic line meshes
+  - **Holographic Event Pads** — Interactive 3D wireframe boxes with glowing inner cores
+  - **Infinite Floor Grid** — Cyan spatial perspective grid with volumetric fog
+- **Scroll-Driven Camera Journey (GSAP ScrollTrigger)**
+  - 600vh smooth camera path traversing 4 distinct zones:
+    - **Zone 0: Initiate (Hero)** — Camera focused on central core with 3D parallax
+    - **Zone 1: Matrix (Events)** — Camera pans left to focus on interactive 3D holographic pads
+    - **Zone 2: Timeline (Sequence)** — Camera moves into high-angle view of floor grid
+    - **Zone 3: CTA (Initiate Link)** — Camera zooms deep into the glowing core
+- **3D Raycasting & Interactions**
+  - Hovering over 3D holographic pads highlights them with emission glow
+  - Clicking 3D pads or HTML event rows triggers track registration modal
+- **Command Terminal (`Ctrl+K`)** — Interactive 3D shell (`help`, `events`, `status`, `register`, `clear`)
+- **Overlay HTML System** — Glassmorphism panels with Space Grotesk, Inter, and JetBrains Mono typography
 
 ## Tech Stack
 
-- HTML5 + Vanilla CSS + Vanilla JS
-- [GSAP 3 + ScrollTrigger](https://gsap.com/)
-- [Space Grotesk · Inter · JetBrains Mono](https://fonts.google.com/) via Google Fonts
-- [Font Awesome 6](https://fontawesome.com/)
+- **Three.js r128** (WebGL Rendering Engine)
+- **GSAP 3 + ScrollTrigger** (Camera Scroll Journey)
+- **HTML5 / CSS3 / JavaScript (ES6+)**
+- **Font Awesome 6** & **Google Fonts**
 
-## Local Development
+## Local Setup
 
-Open `index.html` directly in your browser, or serve locally:
+Serve locally using Python or Node:
 
 ```bash
 # Python
 python -m http.server 8000
 
-# Node (npx)
+# Node
 npx serve .
 ```
 
-Then visit `http://localhost:8000`.
-
-## Files
-
-```
-index.html   — Page structure
-style.css    — Design system & styles
-script.js    — GSAP engine, canvas, modal, terminal
-```
+Visit `http://localhost:8000`.
 
 ## License
 
